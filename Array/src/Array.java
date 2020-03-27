@@ -87,7 +87,7 @@ public class Array<E> {
         }
 
         if (size == data.length) {
-            resize(data.length >> 1 + data.length);
+            resize((data.length >> 1) + data.length);
         }
 
         for (int i = size - 1; i > index; i--) {
