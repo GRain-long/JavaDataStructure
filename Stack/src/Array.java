@@ -87,7 +87,7 @@ public class Array<E> {
         }
 
         if (size == data.length) {
-            resize(data.length >> 1 + data.length);
+            resize((data.length >> 1) + data.length);
         }
 
         for (int i = size - 1; i > index; i--) {
@@ -112,17 +112,19 @@ public class Array<E> {
 
     /**
      * 返回数组最后一个元素
+     *
      * @return
      */
-    public E getLast(){
+    public E getLast() {
         return get(size - 1);
     }
 
     /**
      * 返回数组第一个元素
+     *
      * @return
      */
-    public E getFirst(){
+    public E getFirst() {
         return get(0);
     }
 
