@@ -115,10 +115,9 @@ public class LinkedList<E> {
 
     /**
      * 获取第一个元素
-     * @param index
      * @return
      */
-    public E getFirst(int index){
+    public E getFirst(){
         return get(0);
     }
 
