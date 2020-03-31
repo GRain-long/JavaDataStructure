@@ -96,4 +96,120 @@ public class LinkedList<E> {
     }
 
 
+    /**
+     * 获取index位置的元素
+     * @param index
+     * @return
+     */
+    public E get(int index){
+        if(index<0||index>=size){
+            throw new IllegalArgumentException("Get failed. illegal index.");
+        }
+
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        return cur.e;
+    }
+
+    /**
+     * 获取第一个元素
+     * @param index
+     * @return
+     */
+    public E getFirst(int index){
+        return get(0);
+    }
+
+    /**
+     * 获取最后一个元素
+     * @param index
+     * @return
+     */
+    public E getLast(int index){
+        return get(size - 1);
+    }
+
+    /**
+     * 修改index位置的元素
+     * @param index
+     * @param e
+     */
+    public void set(int index,E e){
+        if (index<0||index>=size) {
+            throw new IllegalArgumentException("Set failed, illegal index.");
+        }
+
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        cur.e = e;
+
+    }
+
+    /**
+     * 查找链表中是否包含元素e
+     * @param e
+     * @return
+     */
+    public boolean contains(E e){
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            if (cur.e.equals(e)) {
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
+    }
+
+    /**
+     * 删除链表中index中的位置
+     * @param index
+     * @return
+     */
+    public E remove (int index){
+
+        if(index<0||index>=size){
+            throw new IllegalArgumentException("Remove failed, illegal index.");
+        }
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+        Node retNode = prev.next;
+        prev.next = retNode.next;
+        retNode.next = null;
+        size--;
+        return retNode.e;
+    }
+
+    /**
+     * 删除第一个元素
+     * @return
+     */
+    public E removeFirst(){
+        return remove(0);
+    }
+
+    /**
+     * 删除最后一个元素
+     * @return
+     */
+    public E removeLast(){
+        return remove(size - 1);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        Node cur = dummyHead.next;
+        while(cur!=null){
+            sb.append(cur + " -> ");
+            cur = cur.next;
+        }
+        return sb.toString();
+    }
 }
